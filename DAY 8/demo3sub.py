@@ -1,10 +1,10 @@
 import paho.mqtt.client as mqtt
 
-# ---------- THRESHOLDS ----------
+#THRESHOLDS
 PULSE_THRESHOLD = 100
 SPO2_THRESHOLD = 92
 
-# ---------- MQTT CALLBACK ----------
+#MQTT CALLBACK
 def on_message(client, userdata, msg):
     try:
         value = int(msg.payload.decode().strip())
@@ -30,7 +30,7 @@ def on_message(client, userdata, msg):
     except Exception as e:
         print("Error:", e)
 
-# ---------- MQTT CLIENT ----------
+#MQTT CLIENT
 client = mqtt.Client(client_id="health_monitor")
 client.on_message = on_message
 
